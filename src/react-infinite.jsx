@@ -462,18 +462,39 @@ class Infinite extends React.Component<
 
     // topSpacer and bottomSpacer take up the amount of space that the
     // rendered elements would have taken up otherwise
-    return <div className={this.computedProps.className}
-                ref={(c) => { this.scrollable = c; }}
-                style={this.utils.buildScrollableStyle()}
-                onScroll={this.utils.nodeScrollListener}>
-      <div ref={(c) => { this.smoothScrollingWrapper = c; }} style={infiniteScrollStyles}>
-        <div ref={(c) => { this.topSpacer = c; }}
-             style={this.buildHeightStyle(topSpacerHeight)}/>
-        {this.computedProps.displayBottomUpwards && loadingSpinner}
-          {this.computedProps.childrenRenderer ? this.computedProps.childrenRenderer(displayables) : displayables}
-        {!this.computedProps.displayBottomUpwards && loadingSpinner}
-        <div ref={(c) => { this.bottomSpacer = c; }}
-             style={this.buildHeightStyle(bottomSpacerHeight)}/>
+    return (
+      <div
+        className={this.computedProps.className}
+        ref={c => {
+          this.scrollable = c;
+        }}
+        style={this.utils.buildScrollableStyle()}
+        onScroll={this.utils.nodeScrollListener}
+      >
+        <div
+          ref={c => {
+            this.smoothScrollingWrapper = c;
+          }}
+          style={infiniteScrollStyles}
+        >
+          <div
+            ref={c => {
+              this.topSpacer = c;
+            }}
+            style={this.buildHeightStyle(topSpacerHeight)}
+          />
+          {this.computedProps.displayBottomUpwards && loadingSpinner}
+          {this.computedProps.childrenRenderer
+            ? this.computedProps.childrenRenderer(displayables)
+            : displayables}
+          {!this.computedProps.displayBottomUpwards && loadingSpinner}
+          <div
+            ref={c => {
+              this.bottomSpacer = c;
+            }}
+            style={this.buildHeightStyle(bottomSpacerHeight)}
+          />
+        </div>
       </div>
     );
   }

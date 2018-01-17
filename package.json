@@ -29,7 +29,6 @@
     "preversion": "npm run verify",
     "prepublish": "gulp release",
     "lint-staged": "lint-staged",
-    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": "npm run fix",
