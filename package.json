@@ -28,7 +28,7 @@
     "verify": "npm test && npm run typecheck && npm run lint",
     "preversion": "npm run verify",
     "prepublish": "gulp release",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.js": "npm run fix",
